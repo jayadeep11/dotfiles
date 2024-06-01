@@ -6,6 +6,8 @@ function fish_prompt -d "Write out the prompt"
         (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 end
 
+alias ss='echo "$fish_color_cwd"'
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
     set fish_greeting
@@ -23,6 +25,7 @@ bind \cf 'tmux-sessionizer'
 if test -f ~/.config/fish/aliases.fish
     source ~/.config/fish/aliases.fish
 end
+
 
 
 

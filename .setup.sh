@@ -12,7 +12,7 @@ if [[ $INST == "y" || $INST == "Y" ]]; then
 
     # Loop through the directories and delete each one
     for dir in "${dirs[@]}"; do
-        rm -rf "$HOME/$dir"
+        rm "$HOME/$dir"
     done
 
     # link

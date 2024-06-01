@@ -19,14 +19,11 @@ end
 
 bind \cf 'tmux-sessionizer'
 
-alias pamcan=pacman
+# Source aliases
+if test -f ~/.config/fish/aliases.fish
+    source ~/.config/fish/aliases.fish
+end
 
-alias ls=lsd
-
-alias pers='cd $HOME/personals/'
-alias pro='cd $HOME/projects/'
-alias dt='cd $HOME/.dotfiles/'
-alias dc='cd $HOME/.dotfiles/.config/'
 
 
 # function fish_prompt

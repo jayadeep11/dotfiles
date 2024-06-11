@@ -1,4 +1,5 @@
 require 'jaya.set'
+require 'jaya.remap'
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

@@ -6,8 +6,6 @@ function fish_prompt -d "Write out the prompt"
         (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 end
 
-alias ss='echo "$fish_color_cwd"'
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
     set fish_greeting
@@ -19,15 +17,7 @@ if test -f ~/.cache/ags/user/generated/terminal/sequences.txt
     cat ~/.cache/ags/user/generated/terminal/sequences.txt
 end
 
-bind \cf 'tmux-sessionizer'
-
-# Source aliases
-if test -f ~/.config/fish/aliases.fish
-    source ~/.config/fish/aliases.fish
-end
-
-
-
+alias pamcan=pacman
 
 # function fish_prompt
 #   set_color cyan; echo (pwd)

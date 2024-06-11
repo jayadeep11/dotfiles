@@ -1,0 +1,43 @@
+#!/bin/bash
+
+username="jayadeep11"
+git_url="https://github.com"
+browser_name="brave" # change to your browser
+
+# Check if an argument is provided
+if [ $# -eq 0 ]; then
+    brave $git_url
+else
+    case $1 in
+        new)
+            brave "$git_url/new"
+            ;;
+        repos)
+            brave "$git_url/$username?tab=repositories'r"
+            ;;
+        ssh)
+            $browser_name "$git_url/settings/keys"
+            ;;
+        tokens)
+            $browser_name "$git_url/settings/tokens"
+            ;;
+
+        # this is my personal repos
+        # uncomment
+        d)
+            $browser_name "$git_url/$username/.dotfiles"
+            ;;
+        pers)
+            $browser_name "$git_url/$username/personal-site"
+            ;;
+
+        # safe case
+        # copy this line create your own repos
+        *)
+            brave "$git_url/$username/"
+            ;;
+    esac
+fi
+
+
+

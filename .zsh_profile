@@ -14,4 +14,4 @@ alias ez="nvim $HOME/.dotfiles/.zsh_profile"
 
 # git
 alias ac="git add . && git commit -m 'updated...'"
-
+alias gp="git push origin main"

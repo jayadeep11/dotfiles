@@ -1,0 +1,14 @@
+# Where should I put you?
+bindkey -s ^f "tmux-sessionizer\n"
+
+# keybinds
+alias dt="cd $HOME/.dotfiles/"
+alias dc="cd $HOME/.dotfiles/.config/"
+alias dn="cd $HOME/.dotfiles/.config/nvim/"
+alias dm="cd $HOME/.dotfiles/.config/tmux/"
+
+
+# edits
+alias ez="nvim $HOME/.dotfiles/.zsh_profile"
+
+

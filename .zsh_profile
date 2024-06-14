@@ -10,8 +10,9 @@ alias dm="cd $HOME/.dotfiles/.config/tmux/"
 
 # edits
 alias ez="nvim $HOME/.dotfiles/.zsh_profile"
+alias eh="nvim $HOME/.dotfiles/.config/hypr"
 
 
 # git
 alias ac="git add . && git commit -m 'updated...'"
-alias gp="git push origin main"
+alias gp='git push origin main'

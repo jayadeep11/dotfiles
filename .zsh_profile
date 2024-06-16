@@ -16,3 +16,6 @@ alias eh="nvim $HOME/.dotfiles/.config/hypr"
 # git
 alias ac="git add . && git commit -m 'updated...'"
 alias gp='git push origin main'
+
+# shorts
+alias cm="chmod +x"

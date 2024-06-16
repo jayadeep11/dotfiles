@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+brave --app='https://excalidraw.com/'

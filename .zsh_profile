@@ -1,11 +1,16 @@
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
 
-# keybinds
-alias dt="cd $HOME/.dotfiles/"
-alias dc="cd $HOME/.dotfiles/.config/"
-alias dn="cd $HOME/.dotfiles/.config/nvim/"
-alias dm="cd $HOME/.dotfiles/.config/tmux/"
+# folders
+alias go."cd $HOME/.dotfiles/"
+alias goc="cd $HOME/.dotfiles/.config/"
+alias gon="cd $HOME/.dotfiles/.config/nvim/"
+alias got="cd $HOME/.dotfiles/.config/tmux/"
+alias gob="cd $HOME/.dotfiles/.local/bin/"
+alias gog="cd $HOME/.git/"
+alias gop="cd $HOME/.git/python/"
+alias god="cd $HOME/.git/python/dsa/"
+
 
 
 # edits

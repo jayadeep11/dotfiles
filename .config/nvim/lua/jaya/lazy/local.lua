@@ -1,4 +1,3 @@
-
 -- local local_plugins = {
 --     {
 --         "harpoon",
@@ -23,7 +22,7 @@
 --     },
 --     {
 --         "vim-apm", dir = "~/personal/vim-apm",
---         config = function()
+--         config = function()jjjjjjjjjjjj
 --             --[[
 --             local apm = require("vim-apm")
 --
@@ -38,5 +37,12 @@
 --     },
 -- }
 
-return {}
-
+return {
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "echasnovski/mini.icons" },
+		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	},
+}

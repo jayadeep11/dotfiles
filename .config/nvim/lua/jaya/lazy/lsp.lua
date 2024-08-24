@@ -1,3 +1,5 @@
+local kind_icons = require("jaya.utils.icons")
+
 return {
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
@@ -9,7 +11,6 @@ return {
 
 			-- Useful status updates for LSP.
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ "j-hui/fidget.nvim", opts = {} },
 
 			-- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
 			-- used for completion, annotations and signatures of Neovim apis
@@ -227,6 +228,11 @@ return {
 		dependencies = {
 			-- Snippet Engine & its associated nvim-cmp source
 			{
+
+				"roobert/tailwindcss-colorizer-cmp.nvim",
+			},
+
+			{
 				"L3MON4D3/LuaSnip",
 				build = (function()
 					-- Build Step is needed for regex support in snippets.
@@ -257,6 +263,11 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-emoji",
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
+			"roobert/tailwindcss-colorizer-cmp.nvim",
 			"hrsh7th/cmp-cmdline",
 		},
 		config = function()
@@ -272,6 +283,22 @@ return {
 					end,
 				},
 				completion = { completeopt = "menu,menuone,noinsert" },
+
+				formatting = {
+					fields = { "abbr", "kind", "menu" },
+					format = function(entry, item)
+						require("tailwindcss-colorizer-cmp").formatter(entry, item)
+						item.kind = string.format("%s %s", kind_icons[item.kind], item.kind)
+						item.menu = ({
+							buffer = "buf",
+							nvim_lsp = "lsp",
+							path = "path",
+							nvim_lua = "api",
+							luasnip = "snip",
+						})[entry.source.name]
+						return item
+					end,
+				},
 
 				-- For an understanding of why these mappings were
 				-- chosen, you will need to read `:help ins-completion`

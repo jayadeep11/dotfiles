@@ -5,6 +5,8 @@ vim.keymap.set("n", "<leader>q", ":wqa<CR>", { silent = true, desc = "Save and [
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true, desc = "[W]rite" })
 vim.keymap.set("n", "<leader>r", ":LspRestart<CR>", { silent = true, desc = "[R]estart LSP" })
 
+vim.keymap.set("n", "Y", "y$")
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 

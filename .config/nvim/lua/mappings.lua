@@ -18,7 +18,7 @@ vim.keymap.set("n", "<leader>y", "<cmd>%y+<cr>", { desc = "General | Yank All Te
 vim.keymap.set("n", "<leader>q", "<cmd>qa!<cr>", { desc = "General | Quit", silent = true })
 
 -- save
-vim.keymap.set("n", "<leader>wa", "<cmd>wa<cr>", { desc = "General | Quit", silent = true })
+vim.keymap.set("n", "<leader>wa", "<cmd>ww<cr>", { desc = "General | Quit", silent = true })
 
 
 -- Close Buffer

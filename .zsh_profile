@@ -25,3 +25,7 @@ alias gp='git push origin main'
 # shorts
 alias cm="chmod +x"
 alias ls='lsd'
+
+# creat fzf to select movies in videos folder
+# preview with mpv
+alias fz='fzf --preview="mpv --no-video-title-show {}"'

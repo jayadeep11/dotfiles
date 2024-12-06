@@ -14,7 +14,7 @@ return {
       end
     end, { desc = "Options | Toggle Autocomplete" })
   end,
-  config = function(_, opts)
+  opts = function(_, opts)
     -- table.insert(opts.sources, 2, { name = "codeium" })
     -- table.insert(opts.sources, 1, { name = "supermaven" })
 
@@ -27,31 +27,6 @@ return {
     opts.enabled = function()
       return (vim.g.toggle_cmp and vim.bo.buftype == "")
     end
-
-    local icons = require "nvchad.icons.lspkind"
-
-    -- Add your custom menu here
-    local menu = {
-      -- ["vim-dadbod-completion"] = "",
-    }
-
-    opts.formatting = {
-      format = function(entry, vim_item)
-        local kind = require("lspkind").cmp_format { menu = menu, mode = "text", maxwidth = 50 }(entry, vim_item)
-        local strings = vim.split(kind.kind, " ", { trimempty = true })
-        kind.kind = string.format(" %s  %s", icons[vim_item.kind], strings[1])
-        kind.menu = " " .. (kind.menu or "")
-
-        return kind
-      end,
-    }
-
-    -- vim.api.nvim_create_autocmd("FileType", {
-    --   pattern = { "sql", "mysql", "plsql" },
-    --   callback = function()
-    --     require("cmp").setup.buffer { sources = { { name = "vim-dadbod-completion" } } }
-    --   end,
-    -- })
 
     require("luasnip").filetype_extend("javascriptreact", { "html" })
     require("luasnip").filetype_extend("typescriptreact", { "html" })
@@ -68,25 +43,8 @@ return {
         documentation = require("cmp").config.window.bordered(),
       }
     end
-
-    require("cmp").setup(opts)
-
-    local cmdline_mappings = vim.tbl_extend("force", {}, require("cmp").mapping.preset.cmdline(), {
-      -- ["<CR>"] = { c = require("cmp").mapping.confirm { select = true } },
-    })
-
-    require("cmp").setup.cmdline(":", {
-      mapping = cmdline_mappings,
-      sources = {
-        { name = "cmdline" },
-      },
-    })
   end,
   dependencies = {
-    -- Icons
-    {
-      "onsails/lspkind.nvim",
-    },
     -- For Rust
     {
       "saecki/crates.nvim",
@@ -96,6 +54,18 @@ return {
     -- Commandline completions
     {
       "hrsh7th/cmp-cmdline",
+      config = function()
+        local cmdline_mappings = vim.tbl_extend("force", {}, require("cmp").mapping.preset.cmdline(), {
+          -- ["<CR>"] = { c = require("cmp").mapping.confirm { select = true } },
+        })
+
+        require("cmp").setup.cmdline(":", {
+          mapping = cmdline_mappings,
+          sources = {
+            { name = "cmdline" },
+          },
+        })
+      end,
     },
     -- AI Autocomplete
     {
@@ -108,14 +78,15 @@ return {
     {
       "supermaven-inc/supermaven-nvim",
       -- commit = "df3ecf7",
-      event = "User FilePost",
+      -- commit = "40bde487fe31723cdd180843b182f70c6a991226",
+      event = "BufReadPost",
       opts = {
         disable_keymaps = false,
         disable_inline_completion = false,
         keymaps = {
-          accept_suggestion = "<C-;>",
+          accept_suggestion = "<A-f>",
           clear_suggestion = "<Nop>",
-          accept_word = "<C-y>",
+          accept_word = "<A-w>",
         },
       },
     },

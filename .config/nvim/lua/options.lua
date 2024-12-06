@@ -33,7 +33,7 @@ local options = {
   sidescrolloff = 8, -- minimal number of screen columns
   lazyredraw = false, -- Won't be redrawn while executing macros, register and other commands.
   termguicolors = true, -- Enables 24-bit RGB color in the TUI
-  fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = " ", foldclose = "", lastline = " " }, -- make EndOfBuffer invisible
+  fillchars = { eob = " ", fold = " ", foldopen = " ", foldsep = " ", foldclose = " ", lastline = " " }, -- make EndOfBuffer invisibleoptin
   ruler = false, -- show the line and column number of the cursor position``
   cmdheight = 0, -- height of the command line
   helpheight = 10, -- height of the help window
@@ -46,20 +46,6 @@ local options = {
   -- shellxquote = "",
 }
 
-local global = {
-  mkdp_auto_close = false, -- Don't Exit Preview When Switching Buffers
-  snipmate_snippets_path = vim.fn.stdpath "config" .. "/snippets/snipmate", -- path to snipmate snippets
-  startup_message = false, -- Show startup message
-  random_header = true, -- Show random header
-  skip_ts_context_commentstring_module = true, -- disable treesitter context commentstring
-  toggle_cmp = true, -- enable nvim-cmp
-  ["loaded_node_provider"] = 0, -- disable node provider
-  ["loaded_python3_provider"] = 0, -- disable python3 provider
-  ["loaded_perl_provider"] = 0, -- disable perl provider
-  ["loaded_ruby_provider"] = 0, -- disable ruby provider
-  toggle_theme_icon = "   ",
-}
-
 vim.opt.shortmess:append "Ac" -- Disable asking
 vim.opt.whichwrap:append "<>[]hl"
 vim.opt.iskeyword:append "-"
@@ -68,12 +54,7 @@ for name, value in pairs(options) do
   vim.opt[name] = value
 end
 
-for name, value in pairs(global) do
-  vim.g[name] = value
-end
-
 -- add binaries installed by mason.nvim to path
-local is_windows = vim.fn.has "win32" ~= 0
-local sep = is_windows and "\\" or "/"
-local delim = is_windows and ";" or ":"
-vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
+vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, vim.g.path_separator)
+  .. vim.g.path_delimiter
+  .. vim.env.PATH

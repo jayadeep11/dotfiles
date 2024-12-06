@@ -8,6 +8,7 @@ local bufnr = vim.api.nvim_get_current_buf()
 local java_debug_path = vim.fn.stdpath "data" .. "/mason/packages/java-debug-adapter/"
 local java_test_path = vim.fn.stdpath "data" .. "/mason/packages/java-test/"
 local jdtls_path = vim.fn.stdpath "data" .. "/mason/packages/jdtls/"
+local lombok_path = vim.fn.stdpath "data" .. "/mason/packages/lombok-nightly/"
 
 local bundles = {
   vim.fn.glob(java_debug_path .. "extension/server/com.microsoft.java.debug.plugin-*.jar", true),
@@ -27,11 +28,11 @@ for _, file in pairs(equinox_path) do
 end
 
 WORKSPACE_PATH = vim.fn.stdpath "data" .. "/workspace/"
-if vim.fn.has "mac" == 1 then
+if vim.g.os == "Darwin" then
   OS_NAME = "mac"
-elseif vim.fn.has "unix" == 1 then
+elseif vim.g.os == "Linux" then
   OS_NAME = "linux"
-elseif vim.fn.has "win32" == 1 then
+elseif vim.g.os == "Windows" then
   OS_NAME = "win"
 else
   vim.notify("Unsupported OS", vim.log.levels.WARN, { title = "Jdtls" })
@@ -54,7 +55,7 @@ local config = {
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
-    "-javaagent:" .. jdtls_path .. "/lombok.jar",
+    "-javaagent:" .. lombok_path  .. "lombok.jar",
     "-Xms1g",
     "--add-modules=ALL-SYSTEM",
     "--add-opens",

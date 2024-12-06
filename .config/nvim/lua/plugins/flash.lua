@@ -1,5 +1,5 @@
 ---@type NvPluginSpec
--- NOTE : Search motions
+-- NOTE: Search motions
 return {
   "folke/flash.nvim",
   event = "CmdlineEnter",

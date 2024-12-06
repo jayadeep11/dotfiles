@@ -82,7 +82,11 @@ autocmd("BufReadPost", {
 
 autocmd("TextYankPost", {
   callback = function()
-    require("vim.highlight").on_yank { higroup = "Visual", timeout = 200 }
+    if vim.version().minor >= 11 then
+      require("vim.hl").on_yank { higroup = "Visual", timeout = 200 }
+    else
+      require("vim.highlight").on_yank { higroup = "Visual", timeout = 200 }
+    end
   end,
   group = general,
   desc = "Highlight when yanking",
@@ -173,28 +177,4 @@ autocmd("FileType", {
   end,
   group = overseer,
   desc = "Enter Normal Mode In OverseerList",
-})
-
--- For Godot
-local godot = augroup("Godot", { clear = true })
-
-autocmd("FileType", {
-  pattern = { "gdscript" },
-  callback = function()
-    vim.g.godot = true
-    local port = os.getenv "GDScript_Port" or "6005"
-    local cmd = vim.lsp.rpc.connect("127.0.0.1", port)
-    local pipe = "/tmp/godot.pipe"
-
-    vim.lsp.start {
-      name = "godot",
-      cmd = cmd,
-      root_dir = vim.fs.dirname(vim.fs.find({ "project.godot" }, { upward = true })[1]),
-      on_attach = function(_, _)
-        vim.api.nvim_command('echo serverstart("' .. pipe .. '")')
-      end,
-    }
-  end,
-  group = godot,
-  desc = "Start Godot LSP",
 })

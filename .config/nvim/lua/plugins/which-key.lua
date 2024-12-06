@@ -34,7 +34,6 @@ return {
         { "<leader>r", group = "Runner", icon = "" },
         { "<leader>t", group = "Terminal", icon = "" },
         { "<leader>v", group = "Venv", icon = "" },
-        { "<leader>m", group = "Fun", icon = "" },
       },
     }
   end,

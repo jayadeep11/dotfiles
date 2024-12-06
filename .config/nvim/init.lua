@@ -1,7 +1,4 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
-vim.g.border_enabled = false -- NOTE: Toggle border for LSP Windows, nvim-cmp, lazy, which-key, mason
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+require "core.globals"
 
 if vim.version().minor >= 11 then
   vim.tbl_add_reverse_lookup = function(tbl)
@@ -31,18 +28,19 @@ require("lazy").setup({
     lazy = false,
     branch = "v2.5",
     import = "nvchad.plugins",
-    config = function()
-      require "options"
-    end,
   },
 
   { import = "plugins" },
 }, lazy_config)
 
 -- Load the highlights
-require("base46").load_all_highlights()
+for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
+  dofile(vim.g.base46_cache .. v)
+end
 
+require "options"
 require "nvchad.autocmds"
+require "core.commands"
 
 vim.schedule(function()
   require "mappings"

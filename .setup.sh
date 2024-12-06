@@ -3,6 +3,7 @@
 # Install Zsh and Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/chrissicool/zsh-256color ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-256color
 
 # Install Tpm for Tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -50,6 +51,9 @@ packages=(
   bluez
   bluez-utils
   blueman
+  lsd
+  zoxide
+  ripgrep
   hyprland
 )
 

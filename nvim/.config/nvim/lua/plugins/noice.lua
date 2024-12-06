@@ -3,6 +3,7 @@
 return {
   "folke/noice.nvim",
   lazy = false,
+  enabled = false,
   dependencies = { { "MunifTanjim/nui.nvim" }, { "rcarriga/nvim-notify" } },
   opts = {
     cmdline = {

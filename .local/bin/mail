@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Check if an argument is provided
-if [ $# -eq 0 ]; then
-    brave 'https://mail.google.com/mail/u/0/#inbox'
-else
-    google-chrome-stable "https://mail.google.com/mail/u/$1/#inbox"
-fi

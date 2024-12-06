@@ -1,27 +1,72 @@
-#!/bin/sh
+#!/bin/bash
 
-# Prompt user for confirmation
-read -n1 -r -p $'Would you like to copy files (y,n) ' INST
-echo    # Move to a new line
+# Install Zsh and Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-# Check user input
-if [[ $INST == "y" || $INST == "Y" ]]; then
-    # Echo and create a directory
-    # List directories and save them in an array
-    dirs=($(ls -d .config/*/))
+# Install Tpm for Tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-    # Loop through the directories and delete each one
-    for dir in "${dirs[@]}"; do
-        rm "$HOME/$dir"
-    done
+# Define package names
+packages=(
+  stow
+  lazygit
+  wezterm
+  fzf
+  fd
+  picom
+  ripgrep
+  jdk-openjdk
+  go
+  go-tools
+  ninja
+  cmake
+  sshfs
+  composer
+  rustup
+  vlc
+  zoom
+  gparted
+  xfce4-screenshooter
+  spectacle
+  pipewire
+  pipewire-alsa
+  pipewire-jack
+  pipewire-pulse
+  pavucontrol
+  wireplumber
+  pipewire-zeroconf
+  filelight
+  xclip
+  unzip
+  rofi
+  tmux
+  brightnessctl
+  clang
+  obs-studio
+  sof-firmware
+  bat
+  alsa-ucm-conf
+  bluez
+  bluez-utils
+  blueman
+  hyprland
+)
 
-    # link
-    stow .
+# Install necessary packages
+for package in "${packages[@]}"; do
+  if ! pacman -Qi "$package" &>/dev/null; then
+    sudo pacman -Syu "$package"
+  else
+    echo "$package is already installed."
+  fi
+done
 
-    # Print confirmation message
-    echo "Everything Allright"
-else
-    echo "Installation aborted."
-fi
+git clone https://github.com/jayadeep11/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+
+sudo systemctl enable bluetooth.service
+
+stow */
 
 

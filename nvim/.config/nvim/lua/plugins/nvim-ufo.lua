@@ -1,9 +1,9 @@
 ---@type NvPluginSpec
 -- NOTE: Improve Folds
 return {
-  "kevinhwang91/nvim-ufo",
   enabled = false,
-  event = "BufReadPost",
+  "kevinhwang91/nvim-ufo",
+  event = "User FilePost",
   init = function()
     vim.o.foldcolumn = "1"
     vim.o.foldlevel = 99

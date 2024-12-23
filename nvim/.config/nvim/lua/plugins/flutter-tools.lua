@@ -1,6 +1,7 @@
 ---@type NvPluginSpec
 -- NOTE: For Flutter Development
 return {
+  enabled = false,
   "akinsho/flutter-tools.nvim",
   ft = "dart",
   dependencies = {

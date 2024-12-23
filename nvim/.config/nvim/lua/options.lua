@@ -24,8 +24,8 @@ local options = {
   shiftwidth = 2, -- the number of spaces inserted for each indentation
   tabstop = 2, -- insert 2 spaces for a tab
   cursorline = true, -- highlight the current line
-  number = true, -- set numbered lines
-  relativenumber = true, -- set relative numbered lines
+  number = false, -- set numbered lines
+  relativenumber = false, -- set relative numbered lines
   numberwidth = 5, -- set number column width to 4 {default 4}
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
   wrap = false, -- display lines as one long line
@@ -33,7 +33,7 @@ local options = {
   sidescrolloff = 8, -- minimal number of screen columns
   lazyredraw = false, -- Won't be redrawn while executing macros, register and other commands.
   termguicolors = true, -- Enables 24-bit RGB color in the TUI
-  fillchars = { eob = " ", fold = " ", foldopen = " ", foldsep = " ", foldclose = " ", lastline = " " }, -- make EndOfBuffer invisible
+  fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = " ", foldclose = "", lastline = " " }, -- make EndOfBuffer invisible
   ruler = false, -- show the line and column number of the cursor position``
   cmdheight = 0, -- height of the command line
   helpheight = 10, -- height of the help window

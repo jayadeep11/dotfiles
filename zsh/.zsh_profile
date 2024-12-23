@@ -3,15 +3,10 @@ bindkey -s ^f "tmux-sessionizer\n"
 
 # folders
 alias go."cd $HOME/.dotfiles/"
-alias goc="cd $HOME/.dotfiles/.config/"
-alias gon="cd $HOME/.dotfiles/.config/nvim/"
-alias got="cd $HOME/.dotfiles/.config/tmux/"
-alias gob="cd $HOME/.dotfiles/.local/bin/"
-alias gog="cd $HOME/.git/"
-alias gop="cd $HOME/.git/python/"
-alias god="cd $HOME/.git/python/dsa/"
-
-
+alias gon="cd $HOME/.dotfiles/nvim/.config/nvim/"
+alias gok="cd $HOME/.dotfiles/kitty/.config/kitty/"
+alias gob="cd $HOME/.dotfiles/bin/"
+alias prog="cd $HOME/work/programming/"
 
 # edits
 alias ez="nvim $HOME/.dotfiles/.zsh_profile"
@@ -29,3 +24,4 @@ alias ls='lsd'
 # creat fzf to select movies in videos folder
 # preview with mpv
 alias fz='fzf --preview="mpv --no-video-title-show {}"'
+alias nf='nvim $(fzf --height 40% --layout reverse --border)'

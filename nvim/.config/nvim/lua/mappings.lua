@@ -68,7 +68,7 @@ vim.keymap.set("n", "<leader>oS", function()
 end, { desc = "Options | Toggle Spell Check", silent = true })
 
 -- Toggle Theme
-vim.keymap.set("n", "<leader>oT", function()
+vim.keymap.set("n", "<leader>ot", function()
   local opts = require("nvconfig").base46
   require("base46").toggle_theme()
   if opts.theme_toggle == nil or (opts.theme ~= opts.theme_toggle[1] and opts.theme ~= opts.theme_toggle[2]) then
@@ -82,7 +82,7 @@ vim.keymap.set("n", "<leader>oT", function()
 end, { desc = "Options | Toggle Theme", silent = true })
 
 -- Toggle Transparency
-vim.keymap.set("n", "<leader>ot", function()
+vim.keymap.set("n", "<leader>oT", function()
   require("base46").toggle_transparency()
   if require("nvconfig").base46.transparency then
     vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000" })

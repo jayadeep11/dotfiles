@@ -1,7 +1,8 @@
 ---@type NvPluginSpec
 -- NOTE: Show Marks
 return {
+  enabled = false,
   "chentoast/marks.nvim",
-  event = "BufReadPost",
+  event = "User FilePost",
   opts = {},
 }

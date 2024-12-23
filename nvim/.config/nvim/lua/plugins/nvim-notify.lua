@@ -2,6 +2,7 @@
 -- NOTE: Notification
 return {
   "rcarriga/nvim-notify",
+  enabled = false,
   -- lazy = false,
   event = "VeryLazy",
   opts = {
@@ -16,7 +17,7 @@ return {
     local base46 = require("nvconfig").base46
 
     if base46.transparency then
-      opts.background_colour = "#000000"
+      opts.background_colour = "#121212"
     end
 
     require("notify").setup(opts)

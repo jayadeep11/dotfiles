@@ -25,3 +25,15 @@ alias ls='lsd'
 # preview with mpv
 alias fz='fzf --preview="mpv --no-video-title-show {}"'
 alias nf='nvim $(fzf --height 40% --layout reverse --border)'
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+eval "$(zoxide init zsh)"
+
